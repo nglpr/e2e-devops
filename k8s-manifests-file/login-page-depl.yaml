@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-page
+  namespace: login-page
+spec: 
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels: 
+      role: login-page
+  template:
+    metadata:
+      labels:
+        role: frontend
+    spec: 
+      imagePullSecrets:
+      - name: ecr-registry-secret
+      containers:
+      - name: login-page
+        image: 869544568749.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+        imagePullPolicy: Always
