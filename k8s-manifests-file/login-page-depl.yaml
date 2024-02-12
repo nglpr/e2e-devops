@@ -16,11 +16,11 @@ spec:
   template:
     metadata:
       labels:
-        role: frontend
+        role: login-page
     spec: 
       imagePullSecrets:
       - name: ecr-registry-secret
       containers:
       - name: login-page
-        image: 869544568749.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+        image: 869544568749.dkr.ecr.us-east-1.amazonaws.com/login-page:latest
         imagePullPolicy: Always
